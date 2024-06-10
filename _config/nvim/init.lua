@@ -1,5 +1,12 @@
 local plugin_dir = "plug"
 
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
 -- for plugin debugging purpose, setting DEBUG_NVIM env
 if vim.env.DEBUG_NVIM then
   plugin_dir = "debug"
