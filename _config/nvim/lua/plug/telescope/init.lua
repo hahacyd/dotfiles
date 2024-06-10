@@ -12,6 +12,7 @@ return {
       { "nvim-telescope/telescope-live-grep-args.nvim" },
       { "jvgrootveld/telescope-zoxide" },
       { "tsakirist/telescope-lazy.nvim" },
+      -- { "folke/trouble.nvim" },
     },
     -- tag = "0.1.2",
     config = function()
@@ -20,6 +21,8 @@ return {
       local builtin = require("telescope.builtin")
       local actions = require("telescope.actions")
       local lga = require("plug.telescope.grep")
+      -- local trouble = require("folke/trouble.nvim")
+      -- local open_with_trouble = require("trouble.sources.telescope").open
       require("plug.telescope.customize")
 
       local vimgrep_arguments = {
@@ -68,7 +71,7 @@ return {
           preview = {
             check_mime_type = true,
             filesize_limit = require("core.utils").SizeInMegaBytes,
-            timeout = 100,
+            timeout = 500,
             treesitter = false,
             msg_bg_fillchar = "/",
             hide_on_startup = false,
@@ -86,6 +89,9 @@ return {
               ["PageDown"] = false,
               ["<M-n>"] = actions.results_scrolling_down,
               ["<M-p>"] = actions.results_scrolling_up,
+            },
+            n = {
+              -- ["<c-t>"] = open_with_trouble
             },
           },
         },
@@ -216,7 +222,7 @@ return {
           find_command = find_file_cmd,
         }
       end, u.opts, "[telescope] find files in cur dir")
-      u.keymap("n", "<leader>g", builtin.git_status, u.opts, "[telescope] git status")
+      u.keymap("n", "<leader>gs", builtin.git_status, u.opts, "[telescope] git status")
       u.keymap("n", "<leader>h", builtin.help_tags, u.opts, "[telescope] search help tags")
       u.keymap("n", "<leader>m", function()
         builtin.man_pages { sections = { "ALL" } }
@@ -246,6 +252,7 @@ return {
       u.keymap("n", "<leader>ll", "<Cmd>Telescope lazy<CR>", u.opts, "[telescope] navigate to lazy plugins")
       u.keymap("n", "<leader>lf", ":Tlocate ", { noremap = true }, "[telescope] locate files")
       u.keymap("n", "<leader>z", t.extensions.zoxide.list, u.opts, "[telescope] search recent directories")
+      u.keymap("n", "<leader>r", "<Cmd>Telescope resume<CR>", u.opts, "[telescope] resume")
 
       -- visual/select mode FIXME: not working
       u.keymap("v", "<leader>ws", function()

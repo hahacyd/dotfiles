@@ -16,7 +16,7 @@ else
   require("core.autocmds")
   require("core.mycmds")
   vim.o.statusline = [[%!luaeval('require("status").statusline()')]]
-  vim.cmd.colorscheme("retrobox")
+  -- vim.cmd.colorscheme("retrobox")
 end
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
