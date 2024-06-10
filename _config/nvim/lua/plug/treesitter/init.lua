@@ -43,6 +43,7 @@ return {
           "toml",
           "typescript",
           "vim",
+          "vimdoc",
           "yaml",
           -- "javascript",
         },
