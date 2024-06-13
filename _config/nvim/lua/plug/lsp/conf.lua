@@ -141,7 +141,24 @@ function M.on_attach(client, bufnr)
   u.keymap("n", "<localleader>co", t_builtin.lsp_outgoing_calls, bufopts, "[lsp] go to outgoing_calls")
   u.keymap("n", "<localleader>ca", vim.lsp.buf.code_action, bufopts, "[lsp] code action")
   u.keymap("n", "<localleader>cf", function()
-    vim.lsp.buf.format { async = true }
+    -- 检查当前文件是否是 C++ 文件
+    local function is_cpp_file()
+      local filetype = vim.bo.filetype
+      return filetype == "cpp" or filetype == "c"
+    end
+
+    -- 使用 git-clang-format 格式化 C++ 文件
+    local function format_with_git_clang_format()
+      local filepath = vim.api.nvim_buf_get_name(bufnr)
+      vim.fn.system("git-clang-format -f " .. filepath)
+      vim.cmd("edit!") -- 重新加载文件以应用格式化更改
+    end
+
+    if is_cpp_file() then
+      format_with_git_clang_format()
+    else
+      vim.lsp.buf.format { async = true }
+    end
   end, bufopts, "[lsp] format buffer")
   u.keymap("n", "<localleader>cu", vim.lsp.codelens.refresh, bufopts, "[lsp] refresh codelens")
   u.keymap("n", "<localleader>cr", vim.lsp.codelens.run, bufopts, "[lsp] run codelens")
