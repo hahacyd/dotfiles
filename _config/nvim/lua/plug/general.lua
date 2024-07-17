@@ -64,6 +64,8 @@ return {
   },
   { "tridactyl/vim-tridactyl" },
   { "nvim-neotest/nvim-nio" },
+  { "djoshea/vim-autoread" },
+  { "simeji/winresizer" },
   {
     "Pocco81/auto-save.nvim",
     config = function()
