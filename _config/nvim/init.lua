@@ -7,6 +7,8 @@ vim.g.loaded_netrwPlugin = 1
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
+-- vim.g.winresizer_start_key = ''
+
 -- for plugin debugging purpose, setting DEBUG_NVIM env
 if vim.env.DEBUG_NVIM then
   plugin_dir = "debug"

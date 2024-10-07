@@ -31,7 +31,7 @@ return {
           "html",
           "ini",
           "json",
-          "latex",
+          -- "latex",
           "llvm",
           "lua",
           "mermaid",
