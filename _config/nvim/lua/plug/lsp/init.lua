@@ -110,6 +110,24 @@ return {
         }
       end
 
+      -- mlir
+      lspconfig.mlir_lsp_server.setup {
+        on_attach = conf.on_attach,
+        capabilities = conf.capabilities,
+      }
+
+      -- mlir-pdll
+      lspconfig.mlir_pdll_lsp_server.setup {
+        on_attach = conf.on_attach,
+        capabilities = conf.capabilities,
+      }
+
+      -- mlir-tblgen
+      lspconfig.tblgen_lsp_server.setup {
+        on_attach = conf.on_attach,
+        capabilities = conf.capabilities,
+      }
+
       -- golang
       lspconfig["gopls"].setup {
         on_attach = conf.on_attach,

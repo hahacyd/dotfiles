@@ -45,6 +45,7 @@ return {
           "vim",
           "vimdoc",
           "yaml",
+          "mlir",
           -- "javascript",
         },
         sync_install = true,
