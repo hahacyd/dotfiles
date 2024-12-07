@@ -29,7 +29,7 @@ u.au("VimEnter", {
     end
     if not should_skip then
       -- vim.cmd("Explore!")
-      vim.cmd("NvimTreeToggle")
+      -- vim.cmd("NvimTreeToggle")
     end
   end,
 })
